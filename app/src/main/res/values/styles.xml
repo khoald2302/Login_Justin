@@ -10,4 +10,8 @@
         <item name="windowActionBar">true</item>
     </style>
 
+    <style name="Toolbar.TitleText" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">12sp</item>
+    </style>
+
 </resources>

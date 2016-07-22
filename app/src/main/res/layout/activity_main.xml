@@ -68,7 +68,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
-                app:popupTheme="@style/AppTheme" />
+                app:popupTheme="@style/AppTheme"
+                app:titleTextAppearance="@style/Toolbar.TitleText"/>
 
         </android.support.design.widget.CollapsingToolbarLayout>
 

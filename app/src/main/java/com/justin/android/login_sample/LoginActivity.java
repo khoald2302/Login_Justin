@@ -29,6 +29,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button btnLogin;
     private ProgressDialog pDialog;
     private SessionManager session;
+    static  String token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
         session = new SessionManager(getApplicationContext());
 
         // Check if user is already logged in or not
-        Log.e(TAG, "Checklgin: " + session.isLoggedIn());
+//        Log.e(TAG, "Checklgin: " + session.isLoggedIn());
         if (session.isLoggedIn()) {
             // User is already logged in. Take him to main activity
 
@@ -103,7 +104,7 @@ public class LoginActivity extends AppCompatActivity {
                         // user successfully logged in
                         // Create login session
 
-                        String token = jObj.getString("token");
+                        token = jObj.getString("token");
                         Log.e(TAG, "token_login"+token );
                         session.setLogin(true);
 

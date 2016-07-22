@@ -2,6 +2,7 @@ package com.justin.android.login_sample;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.Bundle;
@@ -31,17 +32,39 @@ public class MainActivity extends AppCompatActivity {
     private ModelAdapter adapter;
     private List<Model> modelList =new ArrayList<Model>();
     private ProgressDialog pDialog;
-    String token;
+     static String token;
+
+    SharedPreferences sf;
+    SharedPreferences.Editor editor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+       sf = getSharedPreferences("appPreferences", MODE_PRIVATE);
+        editor = sf.edit();
+
+
+
         Intent intent=getIntent();
         Bundle bundle = intent.getBundleExtra("Login");
-         token = bundle.getString("token");
-        Log.e("token", "parse_json_list_item: "+token );
+        if(bundle!= null ){
+
+            token = bundle.getString("token");
+            editor.putString("token_app",token);
+            editor.commit();
+
+        }
+        else{
+
+            token=sf.getString("token_app",token);
+        }
+
+
+
+
+
         initCollapsingToolbar();
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         modelList = new ArrayList<>();
